@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+    
+    /* Sidebar colors */
+    --sidebar-background: 240 5.9% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 240 5.9% 10%;
+    
+    /* Custom app colors */
+    --manuscript-bg: 220 14% 96%;
+    --manuscript-border: 220 13% 85%;
+    --reviewer-bg: 213 27% 94%;
+    --reviewer-border: 213 27% 80%;
+    --comment-bg: 204 33% 97%;
+    --comment-border: 204 33% 85%;
+    --response-bg: 142 76% 97%;
+    --response-border: 142 76% 85%;
+    
+    /* Modern gradients and shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(240 5.9% 10%), hsl(240 5.9% 20%));
+    --gradient-subtle: linear-gradient(180deg, hsl(240 4.8% 95.9%), hsl(240 4.8% 98%));
+    --shadow-elegant: 0 4px 12px -4px hsl(240 5.9% 10% / 0.1);
+    --shadow-deep: 0 8px 24px -8px hsl(240 5.9% 10% / 0.15);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    
+    /* Dark sidebar colors */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 240 4.9% 83.9%;
+    
+    /* Dark custom app colors */
+    --manuscript-bg: 240 3.7% 15.9%;
+    --manuscript-border: 240 3.7% 25%;
+    --reviewer-bg: 240 3.7% 12%;
+    --reviewer-border: 240 3.7% 20%;
+    --comment-bg: 240 3.7% 18%;
+    --comment-border: 240 3.7% 28%;
+    --response-bg: 142 76% 8%;
+    --response-border: 142 76% 15%;
+    
+    /* Dark gradients and shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 98%), hsl(240 4.8% 95.9%));
+    --gradient-subtle: linear-gradient(180deg, hsl(240 3.7% 15.9%), hsl(240 10% 3.9%));
+    --shadow-elegant: 0 4px 12px -4px hsl(0 0% 0% / 0.3);
+    --shadow-deep: 0 8px 24px -8px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .manuscript-card {
+    @apply bg-[hsl(var(--manuscript-bg))] border-[hsl(var(--manuscript-border))] rounded-lg border p-3 transition-all duration-200 hover:shadow-md;
+  }
+  
+  .reviewer-card {
+    @apply bg-[hsl(var(--reviewer-bg))] border-[hsl(var(--reviewer-border))] rounded-lg border p-3 ml-4 transition-all duration-200 hover:shadow-md;
+  }
+  
+  .comment-card {
+    @apply bg-[hsl(var(--comment-bg))] border-[hsl(var(--comment-border))] rounded-lg border p-4 transition-all duration-200 hover:shadow-md cursor-pointer;
+  }
+  
+  .comment-card.selected {
+    @apply border-primary shadow-lg bg-primary/5;
+  }
+  
+  .response-section {
+    @apply bg-[hsl(var(--response-bg))] border-[hsl(var(--response-border))] rounded-lg border p-6;
+  }
+  
+  .modern-shadow {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .deep-shadow {
+    box-shadow: var(--shadow-deep);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+}
